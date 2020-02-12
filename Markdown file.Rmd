@@ -2,7 +2,9 @@
 title: "Reproducible Research Course Project 2"
 author: "Tochi Okeke"
 date: "December 8, 2018"
-output: html_document
+output:
+  pdf_document: default
+  html_document: default
 ---
 
 ```{r setup, include=FALSE}
@@ -11,9 +13,6 @@ knitr::opts_chunk$set(echo = TRUE)
 This project will analyze data from the Activity monitoring dataset and create a report using R Markdown and tidyr.
 
 First, I will set my working directory and download the data using the data.table package
-```{r}
-setwd("~/R/RepData_PeerAssessment1-master")
-```
 
 ```{r}
 library(data.table)#for subsetting
@@ -138,10 +137,6 @@ print(head(no_na))
 print(head(data))
 ```
 ###### Make a histogram of the total number of steps taken each day
-```{r}
-print(mean(plot_data$V1))
-print(median(plot_data$V1))
-```
 
 ```{r}
 no_na <- as.data.table(no_na) #Converting the no_na from a data.frame object to a data.table for ease of subsetting
@@ -153,6 +148,10 @@ abline(v=c(mean(plot_data$V1,mean(totalsteps$V1,na.rm=TRUE))),col=c("blue","red"
 text(x=mean(plot_data$V1),y=0,"10766",pos=4)
 
 legend("topright","Mean",col="blue",lty=2)# Adding the legend for ease of interpretation
+
+
+print(mean(plot_data$V1,na.rm = TRUE))
+print(median(plot_data$V1))
 ```
 
 There is little to no difference between the means of the data with and without na values.
